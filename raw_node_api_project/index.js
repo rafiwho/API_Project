@@ -1,24 +1,36 @@
 const http = require('http');
 const {handleRequest} = require('./helper/handlereqres');
+const environment = require('./helper/environment');
+const data = require('./lib/data');
 
-// app object
 const app = {};
-// app properties
-app.config = {
-    port: 3000
-};
 
-// create server
+// data.create('test', 'newFile', {'name': 'Bangladesh','language':'bangla'}, (err) => {
+//     console.log('error is ', err);
+// }
+// );
+// data.read('test', 'newFile', (err, data) => {
+//     console.log('error is ', err, 'data is ', data);
+// }
+// );
+// data.update('test', 'newFile', {'name': 'Englang','language':'English'}, (err) => {
+//     console.log('error is ', err);
+// }
+// );
+
+// data.delete('test', 'newFile', (err) => {
+//     console.log('error is ', err);
+// }
+// );
+
 app.createServer = () => {
     const server = http.createServer(app.handleRequest);
-    server.listen(app.config.port, () => {
-        console.log('listening on port ' + app.config.port);
+    server.listen(environment.port, () => {
+        console.log('listening on port ' + environment.port);
     });
 }
 
-// handle request
 app.handleRequest = handleRequest;
 
-
-// start server
 app.createServer();
+
