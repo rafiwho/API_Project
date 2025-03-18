@@ -1,6 +1,6 @@
 const http = require('http');
-const {handleRequest} = require('./helper/handlereqres');
-const environment = require('./helper/environment');
+const { handleRequest } = require('./helpers/handlereqres');
+const environment = require('./helpers/environments');
 const data = require('./lib/data');
 
 const app = {};
@@ -25,8 +25,8 @@ const app = {};
 
 app.createServer = () => {
     const server = http.createServer(app.handleRequest);
-    server.listen(environment.port, () => {
-        console.log('listening on port ' + environment.port);
+    server.listen(environment.httpPort, () => {
+        console.log('listening on port ' + environment.httpPort);
     });
 }
 
